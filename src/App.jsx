@@ -1,9 +1,22 @@
+import { useState } from 'react';
+
 export default function App() {
+  const [inputValue, setInputValue] = useState('Cats');
+
+  function HandleSubmit(event) {
+    event.preventDefault();
+    alert('You submitted: ' + inputValue);
+  }
+
   return (
     <div>
       <h3>Search for something:</h3>
-      <form>
-        <input type="text" value="Cats" />
+      <form onSubmit={(event) => HandleSubmit(event)}>
+        <input
+          type="text"
+          value={inputValue}
+          onChange={(event) => setInputValue(event.target.value)}
+        />
         <input type="submit" value="Search" />
       </form>
     </div>
